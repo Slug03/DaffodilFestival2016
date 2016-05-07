@@ -24,6 +24,10 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
     private FragmentTransaction fragTransaction;
     private FragmentManager fragManager;
     private ActionBar actionBar;
+    private ArrayList <String> navArray;
+    ArrayAdapter<String> adapter;
+    private int lastClickedPosition;
+    private boolean vendorMenuPresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +37,15 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
         actionBar = getSupportActionBar();
         navList = (ListView) findViewById(R.id.navList);
 
-        ArrayList<String> navArray = new ArrayList<>(); //menu items
+        navArray = new ArrayList<String>(); //menu items
         navArray.add("Home");
         navArray.add("About Us");
         navArray.add("Vendors");
-        navArray.add("Schedule of Events");
+        navArray.add("Schedule");
         navArray.add("Map");
-        navArray.add("Transportation Information");
         navArray.add("Sponsors");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, navArray);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, navArray);
         navList.setAdapter(adapter);
         navList.setOnItemClickListener(this);
         navList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -54,15 +57,31 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
         fragManager = getSupportFragmentManager();
         fragTransaction = fragManager.beginTransaction();
 
+        vendorMenuPresent = false;
         loadFrag(0); //The default fragment is the home
     }
 
     private void loadFrag(int i)
     {
-        navList.setItemChecked(i, true);
+        if(vendorMenuPresent)
+        {
+            if(i <= 4 || i == 6)
+                navList.setItemChecked(i == 6 ? lastClickedPosition : i, true);
+            else
+                navList.setItemChecked(i - 2, true);
+        }
+        else
+        {
+            int tempHighlight = -1;
+            if(i > 2 && i != 6)
+                tempHighlight = i - 2;
+            else
+                tempHighlight = i;
+            navList.setItemChecked(i == 6 ? lastClickedPosition : tempHighlight, true);
+        }
         if(i == 0)
         {
-            actionBar.setTitle("Welcome to the 2016 Daffodil Festival");
+            actionBar.setTitle("Welcome");
             fragTransaction = fragManager.beginTransaction();
             HomeFragment home = new HomeFragment();
             fragTransaction.replace(R.id.fragmentholder,home);
@@ -73,42 +92,38 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
             actionBar.setTitle("About Us");
             fragTransaction = fragManager.beginTransaction();
             AboutUs aboutUs = new AboutUs();
-            fragTransaction.replace(R.id.fragmentholder,aboutUs);
+            fragTransaction.replace(R.id.fragmentholder, aboutUs);
             fragTransaction.commit();
         }
-        else if(i == 2)
+        else if(i == 3)
         {
-            actionBar.setTitle("Vendors");
+            actionBar.setTitle("Vendor List");
             fragTransaction = fragManager.beginTransaction();
             Vendors vendors = new Vendors();
             fragTransaction.replace(R.id.fragmentholder,vendors);
             fragTransaction.commit();
         }
-        else if(i == 3)
-        {
-            actionBar.setTitle("Schedule");
-            fragTransaction = fragManager.beginTransaction();
-            Schedule schedule = new Schedule();
-            fragTransaction.replace(R.id.fragmentholder,schedule);
-            fragTransaction.commit();
-        }
         else if(i == 4)
         {
-            actionBar.setTitle("Map");
+            actionBar.setTitle("Vendor Search");
             fragTransaction = fragManager.beginTransaction();
-            Map map = new Map();
-            fragTransaction.replace(R.id.fragmentholder,map);
+            Vendors vendors = new Vendors();
+            fragTransaction.replace(R.id.fragmentholder,vendors);
             fragTransaction.commit();
         }
         else if(i == 5)
         {
-            actionBar.setTitle("Transportation Information");
+            actionBar.setTitle("Schedule");
             fragTransaction = fragManager.beginTransaction();
-            Transportation transport = new Transportation();
-            fragTransaction.replace(R.id.fragmentholder,transport);
+            Schedule schedule = new Schedule();
+            fragTransaction.replace(R.id.fragmentholder, schedule);
             fragTransaction.commit();
         }
         else if(i == 6)
+        {
+            new Map().execute(this);
+        }
+        else if(i == 7)
         {
             actionBar.setTitle("Sponsors");
             fragTransaction = fragManager.beginTransaction();
@@ -154,7 +169,48 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        loadFrag(position); // load the correct fragment
-        drawerLayout.closeDrawer(navList);
+
+        if(position != 2 && vendorMenuPresent)
+        {
+            loadFrag(position); // load the correct fragment
+            lastClickedPosition = position == 6 ? lastClickedPosition : position;
+            drawerLayout.closeDrawer(navList);
+            if(position != 3 && position != 4 && position != 6)
+            {
+                navArray.remove(3);
+                navArray.remove(3);
+                vendorMenuPresent = false;
+                adapter.notifyDataSetChanged();
+            }
+
+        }
+        else if(position != 2 && !vendorMenuPresent)
+        {
+            if(position > 2)
+                loadFrag(position + 2); // load the correct fragment
+            else
+                loadFrag(position);
+
+            lastClickedPosition = position == 4 ? lastClickedPosition : position;
+            drawerLayout.closeDrawer(navList);
+        }
+        else if(position == 2 && !vendorMenuPresent)
+        {
+            vendorMenuPresent = true;
+            drawerLayout.closeDrawer(navList);
+            navArray.add(3,"\tVendor List");
+            navArray.add(4,"\tVendor Search");
+            adapter.notifyDataSetChanged();
+            drawerLayout.openDrawer(navList);
+        }
+        else if(position == 2 && vendorMenuPresent)
+        {
+            vendorMenuPresent = false;
+            drawerLayout.closeDrawer(navList);
+            navArray.remove(3);
+            navArray.remove(3);
+            adapter.notifyDataSetChanged();
+            drawerLayout.openDrawer(navList);
+        }
     }
 }

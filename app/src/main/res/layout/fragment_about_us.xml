@@ -5,15 +5,56 @@
     tools:context="daffodilfestivalva.org.daffodilfestival2016.AboutUs">
 
     <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="@string/aboutUs" />
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="About the Festival"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="36sp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/green"
+                android:padding="15dp"
+                />
+                <!--android:background="#68efad"
+                android:padding="15dp"-->
+
+            <TextView
+                android:text="Given the title of the &quot;Daffodil Capital of America&quot; in the 1930s and 40s, Gloucester County prides its production of daffodils in America. In celebration of its major economic prosperity from daffodil production, Gloucester County held its first daffodil tour in 1938. Gloucester County continued to hold an annual daffodil tour until 1942, wherein all festivities were discontinued due to war conditions. Forty-five years later, a volunteer citizens committee with the cooperation of the Gloucester Department of Parks and Recreation organized the first Daffodil Festival. Today, please take part in the celebration and recollections of this spectacular county as we celebrate our 30th annual festival!"
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
+                android:background="@color/primaryBackground"
+                android:padding="15dp"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="246dp"
+                android:layout_height="0dp"
+                android:text="Contact Us"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
 
     </ScrollView>
+
 
 </FrameLayout>

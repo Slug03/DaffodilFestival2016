@@ -1,17 +1,26 @@
 <resources>
+
+    <!-- General string resources-->
     <string name="app_name">Daffodil Festival 2016</string>
     <string name="action_settings">Settings</string>
     <string name="openDrawer">Open</string>
     <string name="closeDrawer">Close</string>
     <string name="welcome">Welcome to the 2016 Daffodil Festival!</string>
-    <string name="aboutUs">The Daffodil Festival is a pretty cool event. You should check us out!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhi</string>
+    <string name="aboutUs">About Us</string>
     <string name="vendors">You will be able to sift through a long list, or you can use the vendor search engine.</string>
     <string name="schedule">Here is the schedule of events for the Daffodil Festival</string>
     <string name="map">(Insert map image here)</string>
     <string name="transportation">Here is the bus information and other misc info</string>
     <string name="landingImage">This image is supposed to catch the attention of the user</string>
-    <string name="thankSponsors">\nThank you to our sponsors for their support!</string>
+    <string name="thankSponsors">Thank you to our sponsors for their support!</string>
     <string name="dfLogo">2016 Daffodil Festival Logo</string>
+
+    <!-- Names of Variables used in ViewPDF.java -->
+    <string name="pdf_extension">.pdf</string>
+    <string name="map_name">MapofDaffodilFestival2016</string>
+    <string name="map_url">https://projecteulerfun.files.wordpress.com/2016/04/df-site-map-2016.pdf</string>
+    <string name="googlepdfviewer_url">http://docs.google.com/viewer?url=</string>
+    <string name="contact_us_url">http://daffodilfestivalva.org/contact-us/</string>
 
     <!-- Different sponsor type headers-->
 

@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="daffodilfestivalva.org.daffodilfestival2016.Sponsors">
 
     <ScrollView
@@ -18,10 +18,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
-                android:textStyle="bold"
                 android:textSize="32sp"
                 android:text="@string/kingAlfred"
                 android:fontFamily="sans-serif-light"
+                android:padding="7dp"
+                android:gravity="center"
                 />
 
             <TextView
@@ -30,17 +31,20 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:text="@string/kingAlfredSponsors"
+                android:background="@color/primaryBackground"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
-                android:textStyle="bold"
                 android:textSize="32sp"
                 android:text="@string/dutchMaster"
                 android:fontFamily="sans-serif-light"
+                android:padding="7dp"
+                android:gravity="center"
                 />
 
             <TextView
@@ -49,17 +53,20 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:text="@string/dutchMasterSponsors"
+                android:background="@color/primaryBackground"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
-                android:textStyle="bold"
                 android:textSize="32sp"
                 android:text="@string/spellbinder"
                 android:fontFamily="sans-serif-light"
+                android:padding="7dp"
+                android:gravity="center"
                 />
 
             <TextView
@@ -68,17 +75,20 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:text="@string/spellBinderSponsors"
+                android:background="@color/primaryBackground"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
-                android:textStyle="bold"
                 android:textSize="32sp"
                 android:text="@string/cheerfulness"
                 android:fontFamily="sans-serif-light"
+                android:padding="7dp"
+                android:gravity="center"
                 />
 
             <TextView
@@ -87,17 +97,20 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:text="@string/cheerfulnessSponsors"
+                android:background="@color/primaryBackground"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
-                android:textStyle="bold"
                 android:textSize="32sp"
                 android:text="@string/littleGem"
                 android:fontFamily="sans-serif-light"
+                android:padding="7dp"
+                android:gravity="center"
                 />
 
             <TextView
@@ -106,17 +119,20 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:text="@string/littleGemSponsors"
+                android:background="@color/primaryBackground"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
-                android:textStyle="bold"
                 android:textSize="32sp"
                 android:text="@string/jumbile"
                 android:fontFamily="sans-serif-light"
+                android:padding="7dp"
+                android:gravity="center"
                 />
 
             <TextView
@@ -125,18 +141,19 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:text="@string/jumbileSponsors"
+                android:background="@color/primaryBackground"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 />
 
             <TextView
                 android:id="@+id/thanks"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/thankSponsors"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/green"
-                android:textStyle="bold"
                 android:textSize="32sp"
                 />
 
