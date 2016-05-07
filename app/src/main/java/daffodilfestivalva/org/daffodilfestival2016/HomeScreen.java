@@ -184,6 +184,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
             }
 
         }
+        //
         else if(position != 2 && !vendorMenuPresent)
         {
             if(position > 2)
