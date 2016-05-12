@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:gravity="left"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="13.5sp"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
                 android:padding="7dp"/>
