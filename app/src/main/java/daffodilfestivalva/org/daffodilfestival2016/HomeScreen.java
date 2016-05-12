@@ -25,9 +25,10 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
     private FragmentManager fragManager;
     private ActionBar actionBar;
     private ArrayList <String> navArray;
-    ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapter;
     private int lastClickedPosition;
     private boolean vendorMenuPresent;
+    private boolean isVendorLastClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
         fragTransaction = fragManager.beginTransaction();
 
         vendorMenuPresent = false;
+        isVendorLastClicked = false;
         loadFrag(0); //The default fragment is the home
     }
 
@@ -65,8 +67,13 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
     {
         if(vendorMenuPresent)
         {
-            if(i <= 4 || i == 6)
-                navList.setItemChecked(i == 6 ? lastClickedPosition : i, true);
+            if((i <= 4 || i == 6))
+            {
+                if(!isVendorLastClicked)
+                    navList.setItemChecked(i == 6 ? lastClickedPosition : i, true);
+                else
+                    navList.setItemChecked(i == 6 ? 2 : i, true);
+            }
             else
                 navList.setItemChecked(i - 2, true);
         }
@@ -77,7 +84,11 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
                 tempHighlight = i - 2;
             else
                 tempHighlight = i;
-            navList.setItemChecked(i == 6 ? lastClickedPosition : tempHighlight, true);
+
+            if(!isVendorLastClicked)
+                navList.setItemChecked(i == 6 ? lastClickedPosition : tempHighlight, true);
+            else
+                navList.setItemChecked(i == 6 ? 2: tempHighlight, true);
         }
         if(i == 0)
         {
@@ -168,8 +179,8 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
         if(position != 2 && vendorMenuPresent)
         {
             loadFrag(position); // load the correct fragment
@@ -182,9 +193,8 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
                 vendorMenuPresent = false;
                 adapter.notifyDataSetChanged();
             }
-
+            isVendorLastClicked = false;
         }
-        //
         else if(position != 2 && !vendorMenuPresent)
         {
             if(position > 2)
@@ -194,6 +204,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
 
             lastClickedPosition = position == 4 ? lastClickedPosition : position;
             drawerLayout.closeDrawer(navList);
+            isVendorLastClicked = false;
         }
         else if(position == 2 && !vendorMenuPresent)
         {
@@ -203,6 +214,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
             navArray.add(4,"\tVendor Search");
             adapter.notifyDataSetChanged();
             drawerLayout.openDrawer(navList);
+            isVendorLastClicked = true;
         }
         else if(position == 2 && vendorMenuPresent)
         {
@@ -212,6 +224,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterView.OnItemC
             navArray.remove(3);
             adapter.notifyDataSetChanged();
             drawerLayout.openDrawer(navList);
+            isVendorLastClicked = true;
         }
     }
 }
