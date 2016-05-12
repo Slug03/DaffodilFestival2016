@@ -22,37 +22,36 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="70sp"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/green"
-                android:padding="8.5dp"
+                android:padding="13dp"
                 />
-                <!--android:background="#68efad"
-                android:padding="10dp"-->
+            <!--android:background="#68efad"
+            android:padding="13dp"-->
 
             <TextView
                 android:text="Given the title of the &quot;Daffodil Capital of America&quot; in the 1930s and 40s, Gloucester County prides its production of daffodils in America. In celebration of its major economic prosperity from daffodil production, Gloucester County held its first daffodil tour in 1938. Gloucester County continued to hold an annual daffodil tour until 1942, wherein all festivities were discontinued due to war conditions. Forty-five years later, a volunteer citizens committee with the cooperation of the Gloucester Department of Parks and Recreation organized the first Daffodil Festival. Today, please take part in the celebration and recollections of this spectacular county as we celebrate our 30th annual festival!"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="38sp"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
                 android:background="@color/primaryBackground"
-                android:padding="10dp"
+                android:padding="13dp"
                 android:gravity="center_horizontal"
                 />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
-                android:text="Contact Us"
-                android:textSize="16sp"
                 android:id="@+id/contactUsButton"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="135dp"
+                android:layout_marginRight="135dp"
+                android:text="Contact Us"
+                android:textSize="35sp"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 />
 
         </LinearLayout>
