@@ -47,7 +47,7 @@ public class AboutUs extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Button buttonOne = (Button) getView().findViewById(R.id.button);
+        Button buttonOne = (Button) getView().findViewById(R.id.contactUsButton);
         buttonOne.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 //Do stuff here
